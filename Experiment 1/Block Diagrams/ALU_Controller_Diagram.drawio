@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
   <diagram name="Page-1" id="2GQSdgzQfxvAEoEsbqe-">
-    <mxGraphModel dx="2590" dy="1515" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2025" pageHeight="1350" math="0" shadow="0">
+    <mxGraphModel dx="1500" dy="887" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2025" pageHeight="1350" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -78,7 +78,7 @@
           <mxGeometry x="908" y="275" width="40" height="60" as="geometry" />
         </mxCell>
         <mxCell id="SGPIAYvdbj5NNGIPyoJQ-1" value="ALU Controller" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=60;" parent="1" vertex="1">
-          <mxGeometry x="791" y="1053" width="411" height="84" as="geometry" />
+          <mxGeometry x="805" y="1057" width="411" height="84" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

@@ -3,7 +3,7 @@
 // Include for MACROS
 `include "opcode.vh"
 
-module alu_controller_tb;
+module tb_alu_controller;
 
     // DUT signals
     logic [6:0] opcode;
@@ -47,7 +47,7 @@ module alu_controller_tb;
     int passed_tests = 0;
     int failed_tests = 0;
 
-    //Benchmark for first level controller
+    // Reference model for first-level controller
     function automatic logic [2:0] expected_first_level(
         input logic [6:0] op
     );
@@ -69,12 +69,16 @@ module alu_controller_tb;
         endcase
     endfunction
 
-    // Benchmark for second level controller
-    function automatic logic [3:0] expected_second_level(input logic [2:0] op_group, input logic [2:0] f3, input logic [6:0] f7);
+    // Reference model for second-level controller
+    function automatic logic [3:0] expected_second_level(
+        input logic [2:0] op_group,
+        input logic [2:0] f3,
+        input logic [6:0] f7
+    );
         begin
             case (op_group)
 
-                // R type arithmetic instructions
+                // R-type arithmetic instructions
                 3'b000: begin
                     case (f3)
                         `FNC_ADD_SUB: begin
@@ -102,7 +106,7 @@ module alu_controller_tb;
                     endcase
                 end
 
-                // I type arithmetic instructions
+                // I-type arithmetic instructions
                 3'b001: begin
                     case (f3)
                         `FNC_SRL_SRA: begin
@@ -124,7 +128,7 @@ module alu_controller_tb;
                     endcase
                 end
 
-                // ADD only class
+                // ADD-only class
                 3'b010: expected_second_level = ALU_ADD;
 
                 // Branch instructions
@@ -220,9 +224,11 @@ module alu_controller_tb;
         func7  = 7'b0;
         #5;
 
+        // =========================================
         // Directed tests
+        // =========================================
 
-        // R type arithmetic
+        // R-type arithmetic
         run_test(`OPC_ARI_RTYPE, `FNC_ADD_SUB, 7'b0000000); // ADD
         run_test(`OPC_ARI_RTYPE, `FNC_ADD_SUB, 7'b0100000); // SUB
         run_test(`OPC_ARI_RTYPE, `FNC_XOR,     7'b0000000); // XOR
@@ -234,7 +240,7 @@ module alu_controller_tb;
         run_test(`OPC_ARI_RTYPE, `FNC_SRL_SRA, 7'b0000000); // SRL
         run_test(`OPC_ARI_RTYPE, `FNC_SRL_SRA, 7'b0100000); // SRA
 
-        // I type arithmetic
+        // I-type arithmetic
         run_test(`OPC_ARI_ITYPE, `FNC_ADD_SUB, 7'b0000000); // ADDI
         run_test(`OPC_ARI_ITYPE, `FNC_XOR,     7'b0000000); // XORI
         run_test(`OPC_ARI_ITYPE, `FNC_OR,      7'b0000000); // ORI
@@ -245,7 +251,7 @@ module alu_controller_tb;
         run_test(`OPC_ARI_ITYPE, `FNC_SRL_SRA, 7'b0000000); // SRLI
         run_test(`OPC_ARI_ITYPE, `FNC_SRL_SRA, 7'b0100000); // SRAI
 
-        // ADD only class
+        // ADD-only class
         run_test(`OPC_LOAD,   3'b000, 7'b0000000); // LOAD
         run_test(`OPC_STORE,  3'b010, 7'b0000000); // STORE
         run_test(`OPC_JAL,    3'b000, 7'b0000000); // JAL
@@ -264,13 +270,13 @@ module alu_controller_tb;
         // CSR / reserved
         run_test(`OPC_CSR, 3'b000, 7'b0000000);
 
-
+        // =========================================
         // Randomized testing
-
+        // =========================================
         repeat (3000) begin
             case ($urandom_range(0, 4))
 
-                // Random R type arithmetic
+                // Random R-type arithmetic
                 0: begin
                     case ($urandom_range(0, 9))
                         0: run_test(`OPC_ARI_RTYPE, `FNC_ADD_SUB, 7'b0000000);
@@ -286,7 +292,7 @@ module alu_controller_tb;
                     endcase
                 end
 
-                // Random I type arithmetic
+                // Random I-type arithmetic
                 1: begin
                     case ($urandom_range(0, 8))
                         0: run_test(`OPC_ARI_ITYPE, `FNC_ADD_SUB, 7'b0000000);
@@ -301,7 +307,7 @@ module alu_controller_tb;
                     endcase
                 end
 
-                // Random ADD only class
+                // Random ADD-only class
                 2: begin
                     case ($urandom_range(0, 5))
                         0: run_test(`OPC_LOAD,  3'b000, 7'b0000000);
@@ -327,9 +333,7 @@ module alu_controller_tb;
 
                 // Random CSR / reserved
                 4: begin
-
                     run_test(`OPC_CSR, 3'b000, 7'b0000000);
-
                 end
             endcase
         end
@@ -341,15 +345,11 @@ module alu_controller_tb;
         $display("Failed Tests : %0d", failed_tests);
 
         if (failed_tests == 0)
-
-            $display("All Controller Tests Pass");
-
+            $display("ALL CONTROLLER TESTS PASSED");
         else
-
-            $display("Some Controller Tests");
+            $display("SOME CONTROLLER TESTS FAILED");
 
         $finish;
-        
     end
 
 endmodule

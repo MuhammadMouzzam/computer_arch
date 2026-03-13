@@ -3,7 +3,7 @@
 // Include for MACROS
 `include "opcode.vh"
 
-module immediate_generator_tb;
+module imm_generator_tb;
 
     // DUT signals
     logic [31:0] instruction;
