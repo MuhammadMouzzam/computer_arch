@@ -1,0 +1,54 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
+  <diagram name="Page-1" id="2GQSdgzQfxvAEoEsbqe-">
+    <mxGraphModel dx="2625" dy="1553" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2025" pageHeight="1350" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="WaL1-VvndkG0yepIim_x-2" value="" style="group" vertex="1" connectable="0" parent="1">
+          <mxGeometry x="477.00010463169656" y="314" width="1071.6798953683035" height="722" as="geometry" />
+        </mxCell>
+        <mxCell id="YhbGLTocztO33F60EckN-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=6;fontSize=40;" parent="WaL1-VvndkG0yepIim_x-2" source="YhbGLTocztO33F60EckN-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1071.6798953683035" y="261" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YhbGLTocztO33F60EckN-1" value="&lt;b&gt;ALU&lt;/b&gt;&lt;div&gt;&lt;b&gt;FIRST LEVEL CONTROLLER&lt;/b&gt;&lt;/div&gt;" style="ellipse;whiteSpace=wrap;html=1;strokeWidth=6;fontSize=40;" parent="WaL1-VvndkG0yepIim_x-2" vertex="1">
+          <mxGeometry x="347.67989536830345" width="365" height="524" as="geometry" />
+        </mxCell>
+        <mxCell id="YhbGLTocztO33F60EckN-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;startArrow=classic;startFill=0;endArrow=none;strokeWidth=6;fontSize=40;" parent="WaL1-VvndkG0yepIim_x-2" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="261.9971428571431" as="targetPoint" />
+            <mxPoint x="347.68019628901453" y="262.5522979366182" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YhbGLTocztO33F60EckN-10" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=6;fontSize=40;" parent="WaL1-VvndkG0yepIim_x-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="139.9998953683035" y="288" as="sourcePoint" />
+            <mxPoint x="189.9998953683035" y="238" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YhbGLTocztO33F60EckN-11" value="" style="endArrow=none;html=1;rounded=0;strokeWidth=6;fontSize=40;" parent="WaL1-VvndkG0yepIim_x-2" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="853.6798953683035" y="287" as="sourcePoint" />
+            <mxPoint x="903.6798953683035" y="237" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="YhbGLTocztO33F60EckN-13" value="ALUOp" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=40;strokeWidth=6;" parent="WaL1-VvndkG0yepIim_x-2" vertex="1">
+          <mxGeometry x="810.1798953683035" y="298" width="149" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YhbGLTocztO33F60EckN-15" value="Opcode" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=40;strokeWidth=6;" parent="WaL1-VvndkG0yepIim_x-2" vertex="1">
+          <mxGeometry x="78.9998953683035" y="301" width="158" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YhbGLTocztO33F60EckN-17" value="7" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=40;strokeWidth=6;" parent="WaL1-VvndkG0yepIim_x-2" vertex="1">
+          <mxGeometry x="137.9998953683035" y="166" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="YhbGLTocztO33F60EckN-18" value="3" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=40;strokeWidth=6;" parent="WaL1-VvndkG0yepIim_x-2" vertex="1">
+          <mxGeometry x="864.6798953683035" y="166" width="40" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="SGPIAYvdbj5NNGIPyoJQ-1" value="ALU First Level Controller" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=60;" parent="WaL1-VvndkG0yepIim_x-2" vertex="1">
+          <mxGeometry x="193.67989536830345" y="638" width="705" height="84" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
