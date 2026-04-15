@@ -54,7 +54,7 @@ module data_mem
         sel_half        = 16'b0;
 
         // Byte select inside the fetched word
-        unique case (addr[1:0])
+        case (addr[1:0])
             2'b00: sel_byte = word_rdata[7:0];
             2'b01: sel_byte = word_rdata[15:8];
             2'b10: sel_byte = word_rdata[23:16];
@@ -63,7 +63,7 @@ module data_mem
         endcase
 
         // Halfword select inside the fetched word
-        unique case (addr[1])
+        case (addr[1])
             1'b0: sel_half = word_rdata[15:0];
             1'b1: sel_half = word_rdata[31:16];
             default: sel_half = 16'b0;
@@ -71,14 +71,12 @@ module data_mem
 
         // Alignment checks
         if (mem_read || mem_write) begin
-            unique case (funct3)
+            case (funct3)
                 3'b001, // LH / SH
                 3'b101: // LHU
                     misaligned = addr[0];
-
                 3'b010: // LW / SW
                     misaligned = |addr[1:0];
-
                 default:
                     misaligned = 1'b0;
             endcase
@@ -86,7 +84,7 @@ module data_mem
 
         // Read path
         if (mem_read && !misaligned) begin
-            unique case (funct3)
+            case (funct3)
                 3'b000: read_data = {{24{sel_byte[7]}}, sel_byte}; // LB
                 3'b001: read_data = {{16{sel_half[15]}}, sel_half}; // LH
                 3'b010: read_data = word_rdata; // LW
@@ -98,9 +96,9 @@ module data_mem
 
         // Write path (word update prepared here, committed on clock edge)
         if (mem_write && !misaligned) begin
-            unique case (funct3)
+            case (funct3)
                 3'b000: begin // SB
-                    unique case (addr[1:0])
+                    case (addr[1:0])
                         2'b00: write_word_next[7:0]   = write_data[7:0];
                         2'b01: write_word_next[15:8]  = write_data[7:0];
                         2'b10: write_word_next[23:16] = write_data[7:0];

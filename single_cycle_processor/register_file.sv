@@ -38,9 +38,9 @@ module register_file
         if (rs1_addr == '0) begin
             rs1_data = '0;
         end
-        else if (we && (rd_addr == rs1_addr) && (rd_addr != '0)) begin
-            rs1_data = wr_data; // simple same-cycle bypass
-        end
+        // else if (we && (rd_addr == rs1_addr) && (rd_addr != '0)) begin
+        //     rs1_data = wr_data; // simple same-cycle bypass
+        // end
         else begin
             rs1_data = regs[rs1_addr];
         end
@@ -49,9 +49,9 @@ module register_file
         if (rs2_addr == '0) begin
             rs2_data = '0;
         end
-        else if (we && (rd_addr == rs2_addr) && (rd_addr != '0)) begin
-            rs2_data = wr_data; // simple same-cycle bypass
-        end
+        // else if (we && (rd_addr == rs2_addr) && (rd_addr != '0)) begin
+        //     rs2_data = wr_data; // simple same-cycle bypass
+        // end
         else begin
             rs2_data = regs[rs2_addr];
         end
