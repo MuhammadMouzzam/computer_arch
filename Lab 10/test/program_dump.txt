@@ -1,0 +1,111 @@
+
+program.o:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	002081b3          	add	x3,x1,x2
+   4:	40208233          	sub	x4,x1,x2
+   8:	002092b3          	sll	x5,x1,x2
+   c:	0020a333          	slt	x6,x1,x2
+  10:	0020b3b3          	sltu	x7,x1,x2
+  14:	0020c433          	xor	x8,x1,x2
+  18:	0020d4b3          	srl	x9,x1,x2
+  1c:	4020d533          	sra	x10,x1,x2
+  20:	0020e5b3          	or	x11,x1,x2
+  24:	0020f633          	and	x12,x1,x2
+  28:	00a08693          	addi	x13,x1,10
+  2c:	00309713          	slli	x14,x1,0x3
+  30:	00a0a793          	slti	x15,x1,10
+  34:	00a0b813          	sltiu	x16,x1,10
+  38:	00f0c893          	xori	x17,x1,15
+  3c:	0020d913          	srli	x18,x1,0x2
+  40:	4020d993          	srai	x19,x1,0x2
+  44:	00f0ea13          	ori	x20,x1,15
+  48:	00f0fa93          	andi	x21,x1,15
+  4c:	00108b03          	lb	x22,1(x1)
+  50:	00209b83          	lh	x23,2(x1)
+  54:	0040ac03          	lw	x24,4(x1)
+  58:	0010cc83          	lbu	x25,1(x1)
+  5c:	0020dd03          	lhu	x26,2(x1)
+  60:	00208423          	sb	x2,8(x1)
+  64:	00209523          	sh	x2,10(x1)
+  68:	0020a623          	sw	x2,12(x1)
+  6c:	12345db7          	lui	x27,0x12345
+
+00000070 <beq_x1_x2_plus8>:
+  70:	00208463          	beq	x1,x2,78 <beq_x1_x2_target>
+  74:	00100f93          	addi	x31,x0,1
+
+00000078 <beq_x1_x2_target>:
+  78:	00200f13          	addi	x30,x0,2
+
+0000007c <bne_x1_x2_plus8>:
+  7c:	00209463          	bne	x1,x2,84 <bne_x1_x2_target>
+  80:	00100f93          	addi	x31,x0,1
+
+00000084 <bne_x1_x2_target>:
+  84:	00200f13          	addi	x30,x0,2
+
+00000088 <jal_x10_plus8>:
+  88:	0080056f          	jal	x10,90 <jal_x10_target>
+  8c:	00100f93          	addi	x31,x0,1
+
+00000090 <jal_x10_target>:
+  90:	00200f13          	addi	x30,x0,2
+
+00000094 <hazard_alu_rs1>:
+  94:	002081b3          	add	x3,x1,x2
+  98:	00218233          	add	x4,x3,x2
+
+0000009c <hazard_alu_rs2>:
+  9c:	002081b3          	add	x3,x1,x2
+  a0:	40310233          	sub	x4,x2,x3
+
+000000a4 <hazard_alu_both>:
+  a4:	002081b3          	add	x3,x1,x2
+  a8:	00318233          	add	x4,x3,x3
+
+000000ac <hazard_alu_to_load_base>:
+  ac:	002082b3          	add	x5,x1,x2
+  b0:	0002a303          	lw	x6,0(x5)
+
+000000b4 <hazard_load_use>:
+  b4:	0000a303          	lw	x6,0(x1)
+  b8:	002303b3          	add	x7,x6,x2
+
+000000bc <hazard_load_to_store_data>:
+  bc:	0000a303          	lw	x6,0(x1)
+  c0:	0060a223          	sw	x6,4(x1)
+
+000000c4 <hazard_alu_to_store_data>:
+  c4:	00208333          	add	x6,x1,x2
+  c8:	00602423          	sw	x6,8(x0) # 8 <_start+0x8>
+
+000000cc <hazard_branch_forward_taken>:
+  cc:	002081b3          	add	x3,x1,x2
+  d0:	00418463          	beq	x3,x4,d8 <hazard_branch_target>
+  d4:	00100f93          	addi	x31,x0,1
+
+000000d8 <hazard_branch_target>:
+  d8:	00200f13          	addi	x30,x0,2
+
+000000dc <hazard_branch_not_taken>:
+  dc:	00419463          	bne	x3,x4,e4 <hazard_bne_target>
+  e0:	00100f93          	addi	x31,x0,1
+
+000000e4 <hazard_bne_target>:
+  e4:	00200f13          	addi	x30,x0,2
+
+000000e8 <hazard_jal_flush>:
+  e8:	0080056f          	jal	x10,f0 <hazard_jal_target>
+  ec:	00100f93          	addi	x31,x0,1
+
+000000f0 <hazard_jal_target>:
+  f0:	00200f13          	addi	x30,x0,2
+
+000000f4 <hazard_x0_no_forward>:
+  f4:	00208033          	add	x0,x1,x2
+  f8:	002001b3          	add	x3,x0,x2
+  fc:	00000013          	addi	x0,x0,0

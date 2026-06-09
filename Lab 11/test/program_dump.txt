@@ -1,0 +1,44 @@
+
+program.o:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <_start>:
+   0:	00000093          	addi	x1,x0,0
+   4:	00400113          	addi	x2,x0,4
+   8:	00100193          	addi	x3,x0,1
+
+0000000c <for_loop>:
+   c:	0021a433          	slt	x8,x3,x2
+  10:	06040063          	beq	x8,x0,70 <done>
+  14:	00219313          	slli	x6,x3,0x2
+  18:	00608333          	add	x6,x1,x6
+  1c:	00032283          	lw	x5,0(x6)
+  20:	fff18213          	addi	x4,x3,-1
+
+00000024 <while_loop>:
+  24:	00022433          	slt	x8,x4,x0
+  28:	02041863          	bne	x8,x0,58 <insert_key>
+  2c:	00221313          	slli	x6,x4,0x2
+  30:	00608333          	add	x6,x1,x6
+  34:	00032383          	lw	x7,0(x6)
+  38:	0072a433          	slt	x8,x5,x7
+  3c:	00040e63          	beq	x8,x0,58 <insert_key>
+  40:	00120513          	addi	x10,x4,1 # 1 <_start+0x1>
+  44:	00251593          	slli	x11,x10,0x2
+  48:	00b085b3          	add	x11,x1,x11
+  4c:	0075a023          	sw	x7,0(x11)
+  50:	fff20213          	addi	x4,x4,-1
+  54:	fd1ff06f          	jal	x0,24 <while_loop>
+
+00000058 <insert_key>:
+  58:	00120513          	addi	x10,x4,1 # 1 <_start+0x1>
+  5c:	00251593          	slli	x11,x10,0x2
+  60:	00b085b3          	add	x11,x1,x11
+  64:	0055a023          	sw	x5,0(x11)
+  68:	00118193          	addi	x3,x3,1
+  6c:	fa1ff06f          	jal	x0,c <for_loop>
+
+00000070 <done>:
+  70:	0000006f          	jal	x0,70 <done>
